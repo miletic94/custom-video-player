@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='index.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <title>Custom Video Player</title>
+</head>
+<body>
+    <div id="video-frame">
+        <video src="videos/video1.webm"></video>
+        <div id="controls-frame">
+            <div id="progressbar-container">
+                <div id="progressbar">
+                    <div id="progress-buffered"></div>
+                    <div id="progress-value">
+                        <div id="current-time-indicator">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="controls">
+                <div id="playback-controls">
+                    <div>
+                        <span class="material-icons control-icons">
+                            play_arrow
+                        </span>
+                        <span style="display:none;" class="material-icons control-icons">
+                            pause
+                        </span>
+                    </div>
+                    <div>
+                        <span class="material-icons control-icons">
+                            skip_next
+                        </span>
+                    </div>
+                    <div id="time">
+                        <span id="time-passed">
+                            02:07
+                        </span>
+                        /
+                        <span id="duration">
+                            06:06
+                        </span>
+                    </div>
+                    <div id="volume-controler">
+                        <span class="material-icons control-icons">
+                            volume_up
+                        </span>
+                        <span style="display:none" class="material-icons control-icons">
+                            volume_off
+                        </span>
+                        <div id="volume-control-slider">
+                            <div id="volume-value"></div>
+                            <div id="volume-value-indicator"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="other-controls">
+                    <div id="settings">
+                        <span class="material-icons control-icons">
+                            settings
+                        </span>
+                    </div>
+                    <div>
+                        <span class="material-icons control-icons">
+                            crop_5_4
+                        </span>
+                    </div>
+                    <div>
+                        <span class="material-icons control-icons">
+                            fullscreen
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+<script>
+</script>
+</html>
