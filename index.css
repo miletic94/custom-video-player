@@ -93,10 +93,20 @@ div .control-icons {
     width: 153px;
 }
 #playback-controls:hover #volume-control-slider {
-    display: block;
+    animation: 200ms width-100 forwards;
+    display:block;
+}
+@keyframes width-100 {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100px;
+    }
 }
 #volume-control-slider {
-    display: none;
+    display:none;
+    animation: 200ms width-0;
     left: 20px;
 }
 #volume-value {
@@ -110,8 +120,8 @@ div .control-icons {
     width: 5px;
     height: 18px;
     position: absolute;
-    left:20%;
-    transform: translateY(calc(-50% - 2px));
+    right: 0;
+    transform: translateY(calc(-50% + 2px));
 }
 #other-controls {
     width: 100%;
@@ -140,6 +150,7 @@ div .control-icons {
     background-color: white;
     opacity: 0;
     cursor: pointer;
+    transform: translateX(50%)
 }
 #progressbar-container:hover #current-time-indicator {
     opacity: 1;
@@ -149,12 +160,100 @@ div .control-icons {
     position: relative;
 }
 #volume-control-slider {
-    width: 100px;
+    /* width: 100px; */
     height: 5px;
     background-color: black;
     position: absolute;
 }
+input[type="range"] {
+    width: 100%; 
+    height: 100%; 
+    z-index:1; 
+    position: absolute; 
+    top:0;
+    opacity:0;
+}
+/* Settings */ 
+#settings-pannel {
+    display: none;
+    height: 124px;
+    width: 188px;
+    position: absolute;
+    bottom: 67px;
+    right: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+.pannel-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 
+    /* Typography */
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 34px;
+}
+.pannel-header {
+    border-bottom: solid 2px #C4C4C4;
+}
+.pannel-row .font-14 {
+    font-size: 14px;
+}
+.pannel-row .font-12 {
+    font-size: 12px;
+}
+.no-pointer {
+    cursor: initial;
+}
+#play-button .d-none {
+    display: none;
+}
+#play-button .d-inline {
+    display: inline-block;
+}
+.secondary-settings-pannel {
+    display:none;
+    height: 217px;
+    width: 124px;
+    position: absolute;
+    bottom: 67px;
+    right: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+.justify-center {
+    justify-content: center;
+}
+.justify-between {
+    justify-content: space-between;
+}
+.padding-1 {
+    padding: 1vw;
+}
+
+.toggleAutoplay {
+    width: 20px;
+    height: 12px;
+    cursor:pointer;
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.toggleAutoplay .pellet {
+    width:10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+}
+.toggleAutoplay .pellet.autoplay-true {
+    right: 0;
+}
 /* Colors */ 
 
 :root {
@@ -184,4 +283,17 @@ body {
 }
 div .control-icons, #time {
     color: white;
+}
+#settings-pannel, .secondary-settings-pannel {
+    background-color: black;
+    color: white;
+}
+.toggleAutoplay {
+    background-color: var(--ternary-color);
+}
+.toggleAutoplay.autoplay-true {
+    background-color: var(--primary-color);
+}
+.toggleAutoplay .pellet {
+    background-color: white;
 }

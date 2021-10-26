@@ -13,10 +13,92 @@
     <div id="video-frame">
         <video src="videos/video1.webm"></video>
         <div id="controls-frame">
+            <div id="settings-pannel" style="display: none;">
+                <div class="pannel-row justify-between no-pointer">
+                    <div class="font-14">Autoplay</div>
+                    <div class="toggleAutoplay" data-autoplay="false">
+                        <span class="pellet">
+
+                        </span>
+                    </div>
+                </div>
+                <div class="pannel-row justify-between" data-toggle-settings = "speed-pannel">
+                    <div class="font-14" >
+                        Speed
+                    </div>
+                    <div class="font-12">
+                        Normal 
+                        <span class="material-icons font-12">
+                            arrow_forward_ios
+                        </span>
+                    </div>
+                </div>
+                <div class="pannel-row justify-between" data-toggle-settings="quality-pannel">
+                    <div class="font-14">
+                        Quality
+                    </div>
+                    <div class="font-12">
+                        720p
+                        <span class="material-icons font-12">
+                            arrow_forward_ios
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div id="speed-pannel" class="secondary-settings-pannel" >
+                <div class="pannel-header pannel-row font-14 justify-center" data-toggle-settings = "speed-pannel">
+                    Speed
+                    <span class="material-icons font-12 padding-1">
+                        arrow_back_ios
+                    </span>
+                </div>
+                
+                <div class="pannel-row font-14 justify-center" >
+                    2.0x
+                </div>
+                <div class="pannel-row font-14 justify-center">
+                    1.5x
+                </div>
+                <div class="pannel-row font-14 justify-center">
+                    1.0x
+                </div>
+                <div class="pannel-row font-14 justify-center">
+                    0.75x
+                </div>
+                <div class="pannel-row font-14 justify-center">
+                    0.25x
+                </div>
+            </div>
+            <div id="quality-pannel" class="secondary-settings-pannel">
+                <div class="pannel-header pannel-row font-14 justify-center" data-toggle-settings = "quality-pannel">
+                    Quality
+                    <span class="material-icons font-12 padding-1">
+                        arrow_back_ios
+                    </span>
+                </div>
+                
+                <div class="pannel-row font-14 justify-center" >
+                    1080p
+                </div>
+                <div class="pannel-row font-14 justify-center">
+                    720p
+                </div>
+                <div class="pannel-row font-14 justify-center">
+                    480p
+                </div>
+                <div class="pannel-row font-14 justify-center">
+                    240p
+                </div>
+                <div class="pannel-row font-14 justify-center">
+                    Auto
+                </div>
+            </div>
             <div id="progressbar-container">
                 <div id="progressbar">
                     <div id="progress-buffered"></div>
+                    <input id="video-position-range" type="range" min=0 max=100 />
                     <div id="progress-value">
+                        
                         <div id="current-time-indicator">
 
                         </div>
@@ -26,11 +108,11 @@
             
             <div id="controls">
                 <div id="playback-controls">
-                    <div>
-                        <span class="material-icons control-icons">
+                    <div id="play-button">
+                        <span id="play" class="material-icons control-icons d-none">
                             play_arrow
                         </span>
-                        <span style="display:none;" class="material-icons control-icons">
+                        <span id="pause" class="material-icons control-icons d-inline">
                             pause
                         </span>
                     </div>
@@ -56,13 +138,18 @@
                             volume_off
                         </span>
                         <div id="volume-control-slider">
-                            <div id="volume-value"></div>
-                            <div id="volume-value-indicator"></div>
+                            <input id="volume-position-range" type="range" min=0 max=100/>
+                            <div id="volume-value">
+                                <div id="volume-value-indicator">
+                                    
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
                 <div id="other-controls">
-                    <div id="settings">
+                    <div id="settings-button">
                         <span class="material-icons control-icons">
                             settings
                         </span>
@@ -82,6 +169,10 @@
             
         </div>
     </div>
-<script>
-</script>
+    <script src="scripts/toggleSettingsView.js"></script>
+    <script src="scripts/toggleAutoplayView.js"></script>
+    <script src="scripts/togglePlayPauseView.js"></script>
+    <script src="scripts/sliderHanlder.js"></script>
+
+</body>
 </html>
