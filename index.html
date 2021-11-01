@@ -11,7 +11,7 @@
 </head>
 <body>
     <div id="video-frame">
-        <video src="videos/video1.webm"></video>
+        <!-- <video src="videos/video1.webm" controls></video> -->
         <div id="controls-frame">
             <div id="settings-pannel" style="display: none;">
                 <div class="pannel-row justify-between no-pointer">
@@ -109,10 +109,10 @@
             <div id="controls">
                 <div id="playback-controls">
                     <div id="play-button">
-                        <span id="play" class="material-icons control-icons d-none">
+                        <span id="play" class="material-icons control-icons d-inline">
                             play_arrow
                         </span>
-                        <span id="pause" class="material-icons control-icons d-inline">
+                        <span id="pause" class="material-icons control-icons d-none">
                             pause
                         </span>
                     </div>
@@ -169,6 +169,27 @@
             
         </div>
     </div>
+    <script src="scripts/VideoControler.js"></script>
+    <script>
+        var vid = document.querySelector("video");
+        vid.addEventListener('loadedmetadata', function () {
+            if (vid.duration == Infinity) {
+                vid.currentTime = 1e101;
+                vid.ontimeupdate = function () {
+                    this.ontimeupdate = () => {
+                       return
+                    }
+                    vid.currentTime = 0.001;
+                    getVideoDuration()
+                    return;
+                }
+            }
+        });
+       function getVideoDuration() {
+           console.log(vid.duration)
+           console.log(vid.currentTime)
+       }
+    </script>
     <script src="scripts/toggleSettingsView.js"></script>
     <script src="scripts/toggleAutoplayView.js"></script>
     <script src="scripts/togglePlayPauseView.js"></script>

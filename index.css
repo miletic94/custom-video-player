@@ -7,11 +7,11 @@ body {
 #video-frame {
     width: 100vmin;
     height: 56.25vmin;
-    border: solid 1px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    box-shadow: 0 0 20px 1px black;
 }
 video {
     width: 100%;
