@@ -1,13 +1,65 @@
-const videoPositionRange = document.querySelector('#video-position-range');
-const progressValue = document.querySelector('#progress-value');
+// import {videoPositionRange, volumePositionRange} from "./consts.js"
+// import {progressValue, volumeValue} from "./consts.js"
 
-const volumePositionRange = document.querySelector('#volume-position-range');
-const volumeValue = document.querySelector('#volume-value');
+// Imena za varijable: valueControlElement, valueDisplayElement, value
 
-videoPositionRange.addEventListener("input", (event) => {
-    progressValue.style.width = `${event.target.value}%`
-})
+export class SliderHandler {
+    #value
+    #trackingElement
+    #progressElement
+    constructor(trackingElement, progressElement, value) {
+        this.#trackingElement = trackingElement
+        this.#progressElement = progressElement
+        this.value = value // invoces setter function
+        this.video= "hi"
+    }
+    get value() {
+        return this.#value
+    }
+    get trackingElement() {
+        return this.#trackingElement
+    }
+    get trackingElementValue() {
+        return this.#trackingElement.value
+    }
+    set value(value) {
+        this.#value = value
+        this.#trackingElement.value = value
+        this.#progressElement.style.width = `${value}%`
+    }
+    updateValueFromTrackingElement() {
+        this.value = this.#trackingElement.value
+    }
+}
 
-volumePositionRange.addEventListener("input", (event) => {
-    volumeValue.style.width = `${event.target.value}%`
-})
+// export class VideoSliderHandler extends SliderHandler {
+//     constructor(trackingElement, progressElement, value) {
+//         super(trackingElement, progressElement, value)
+//         this.name = "video position controler"
+//         console.log(`${this.name}: ${this.value}`)
+       
+//     }
+//     transformValueToPercentage(value) {
+//         console.log(this.video)
+//     }
+// }
+// export class VolumeSliderHandler extends SliderHandler {
+//     constructor(trackingElement, progressElement, value) {
+//         super(trackingElement, progressElement, value)
+//         this.name= "volume controler"
+//         console.log(`${this.name}: ${this.value}`)
+//     }
+//     transformValueToPercentage(value) {
+//         return value / 1 * 100
+//     }
+// }
+// const videoPositionHandler = new SliderHandler(videoPositionRange, progressValue, 0)
+// videoPositionRange.addEventListener("input", () => {
+//     videoPositionHandler.updateValueFromTrackingElement()
+// })
+
+// const volumePositionHandler = new SliderHandler(volumePositionRange, volumeValue, 100)
+// volumePositionRange.addEventListener("input", () => {
+//     volumePositionHandler.updateValueFromTrackingElement()
+// })
+

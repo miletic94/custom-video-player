@@ -1,12 +1,12 @@
-const playButton = document.querySelector('#play-button');
+const playPauseButton = document.querySelector('#play-button');
 
 const togglePlayPauseView = () => {
-    [...playButton.children].forEach(child => {
+    [...playPauseButton.children].forEach(child => {
         child.classList.toggle("d-none")
         child.classList.toggle("d-inline")
     })
 }
 
-playButton.addEventListener("click", () => {
+playPauseButton.addEventListener("click", () => {
     togglePlayPauseView()
 })

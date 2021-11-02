@@ -96,7 +96,7 @@
             <div id="progressbar-container">
                 <div id="progressbar">
                     <div id="progress-buffered"></div>
-                    <input id="video-position-range" type="range" min=0 max=100 />
+                    <input id="video-position-range" data-range="video-position"  type="range" min="0" max="100" />
                     <div id="progress-value">
                         
                         <div id="current-time-indicator">
@@ -109,10 +109,10 @@
             <div id="controls">
                 <div id="playback-controls">
                     <div id="play-button">
-                        <span id="play" class="material-icons control-icons d-inline">
+                        <span id="play" data-play="true" class="material-icons control-icons d-inline">
                             play_arrow
                         </span>
-                        <span id="pause" class="material-icons control-icons d-none">
+                        <span id="pause" data-play="false" class="material-icons control-icons d-none">
                             pause
                         </span>
                     </div>
@@ -138,7 +138,7 @@
                             volume_off
                         </span>
                         <div id="volume-control-slider">
-                            <input id="volume-position-range" type="range" min=0 max=100/>
+                            <input id="volume-position-range" data-range="volume-position" type="range" min="0" max="100"/>
                             <div id="volume-value">
                                 <div id="volume-value-indicator">
                                     
@@ -154,12 +154,12 @@
                             settings
                         </span>
                     </div>
-                    <div>
+                    <div data-full-screen = "exit">
                         <span class="material-icons control-icons">
                             crop_5_4
                         </span>
                     </div>
-                    <div>
+                    <div data-full-screen = "enter">
                         <span class="material-icons control-icons">
                             fullscreen
                         </span>
@@ -169,31 +169,12 @@
             
         </div>
     </div>
-    <script src="scripts/VideoControler.js"></script>
-    <script>
-        var vid = document.querySelector("video");
-        vid.addEventListener('loadedmetadata', function () {
-            if (vid.duration == Infinity) {
-                vid.currentTime = 1e101;
-                vid.ontimeupdate = function () {
-                    this.ontimeupdate = () => {
-                       return
-                    }
-                    vid.currentTime = 0.001;
-                    getVideoDuration()
-                    return;
-                }
-            }
-        });
-       function getVideoDuration() {
-           console.log(vid.duration)
-           console.log(vid.currentTime)
-       }
-    </script>
+    <script src="scripts/VideoControler.js" type="module"></script>
+    
     <script src="scripts/toggleSettingsView.js"></script>
     <script src="scripts/toggleAutoplayView.js"></script>
     <script src="scripts/togglePlayPauseView.js"></script>
-    <script src="scripts/sliderHanlder.js"></script>
+    <script src="scripts/sliderHanlder.js" type="module"></script>
 
 </body>
 </html>
