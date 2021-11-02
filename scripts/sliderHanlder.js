@@ -11,7 +11,6 @@ export class SliderHandler {
         this.#trackingElement = trackingElement
         this.#progressElement = progressElement
         this.value = value // invoces setter function
-        this.video= "hi"
     }
     get value() {
         return this.#value
@@ -26,6 +25,9 @@ export class SliderHandler {
         this.#value = value
         this.#trackingElement.value = value
         this.#progressElement.style.width = `${value}%`
+    }
+    set trackingElementValue(value) {
+        
     }
     updateValueFromTrackingElement() {
         this.value = this.#trackingElement.value

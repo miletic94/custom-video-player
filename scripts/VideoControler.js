@@ -8,9 +8,17 @@ class VideoControler {
         this.videoplayer = videoplayer
         this.appendVideoElement(this.videoLink, this.videoplayer)
         this.video = this.videoplayer.querySelector('video')
-        this.videoSliderControler = new SliderHandler(videoPositionRange, progressValue, this.video.currentTime) // value = 0.01 because of the bug video.duration = Infinity
-        this.volumeSliderControler = new SliderHandler(volumePositionRange, volumeValue, this.video.volume) 
-    }
+        let i = setInterval(() => {
+            this.videoDuration = this.video.duration
+            this.videoSliderControler = new SliderHandler(videoPositionRange, progressValue, this.toPercentage(this.video.currentTime, this.videoDuration)) // value = 0.01 because of the bug video.duration = Infinity
+            this.volumeSliderControler = new SliderHandler(volumePositionRange, volumeValue, this.toPercentage(this.video.volume, 1)) 
+            this.video.addEventListener("timeupdate", () => {
+                this.videoSliderControler.value = this.toPercentage(this.video.currentTime, this.videoDuration)
+            })
+            clearInterval(i)
+            }, 200);
+        
+        }
     appendVideoElement(videoLink, videoplayer) {
         let videoElement = document.createElement("video")
         videoElement.setAttribute("src", videoLink)
@@ -28,13 +36,42 @@ class VideoControler {
     exitFullscreen() {
         document.exitFullscreen()
     }
-    
+    toPercentage(divisor, divider) {
+        return divisor / divider * 100
+    }
+    isVideoPlaying()  {
+        return !!(this.video.currentTime > 0 
+                  && !this.video.paused 
+                  && !this.video.ended 
+                  && this.video.readyState > 2);}
+    isVideoEnded(video)  {
+        return !!(this.video.currentTime > 0 
+                  && this.video.paused 
+                  && this.video.ended 
+                  && this.video.readyState > 2);}
+    // TODO: Try static of SliderHandler; remove if statements
+    percentageToValue(percentage, target) {
+        if(target === "time") {
+            return percentage / 100 * this.videoDuration
+        } else if (target === "volume") {
+            return percentage / 100 * 1
+        } else {
+            console.log("You messed something up")
+        }
+    }
+    // Make it more loose and implement try / catch
+    updateVideoCurrentTime(inputElement) {
+        this.video.currentTime = this.percentageToValue(inputElement.value, "time")
+    }
+    updateVideoVolume(inputElement) {
+        this.video.volume = this.percentageToValue(inputElement.value, "volume")
+    }
 }
 
 
 const videoControler = new VideoControler("../videos/video1.webm", videoplayer)
-console.log(videoControler.video.volume)
-enterFullscreenButton.addEventListener("click", () => {
+
+enterFullscreenButton.addEventListener("click",  () => {
     videoControler.enterFullscreen()
 })
 exitFullscreenButton.addEventListener("click", () => {
@@ -47,14 +84,30 @@ playButton.addEventListener("click", () => {
 pauseButton.addEventListener("click", () => {
     videoControler.pause()
 })
+videoControler.video.addEventListener("click", () => {
+    if(!videoControler.isVideoPlaying()) {
+        videoControler.play()
+        togglePlayPauseView()
+    } else if (videoControler.isVideoPlaying()) {
+        videoControler.pause()
+        togglePlayPauseView()
+    }
+})
+
+videoControler.video.addEventListener("ended", () => {
+   if(videoControler.isVideoEnded()) {
+       togglePlayPauseView()
+   }
+})
 
 videoPositionRange.addEventListener("input", () => {
-    console.log("object")
     videoControler.videoSliderControler.updateValueFromTrackingElement()
+    videoControler.updateVideoCurrentTime(videoPositionRange)
 })
 
 volumePositionRange.addEventListener("input", () => {
     videoControler.volumeSliderControler.updateValueFromTrackingElement()
+    videoControler.updateVideoVolume(volumePositionRange)
 })
 
 
