@@ -7,3 +7,8 @@ export const enterFullscreenButton = document.querySelector('[data-full-screen="
 export const exitFullscreenButton = document.querySelector('[data-full-screen="exit')
 export const playButton = document.querySelector('[data-play ="true"]')
 export const pauseButton = document.querySelector('[data-play ="false"]')
+export const playbackRateOptions = [...document.querySelectorAll('[data-playback-rate]')]
+export const currentPlaybackRate = document.querySelector('#current-playback-rate')
+export const videoDurationDisplayElements = [...document.querySelectorAll('[data-duration]')]
+export const videoCurrentTimeDisplayElements = [...document.querySelectorAll('[data-current-time')
+]

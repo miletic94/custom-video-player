@@ -5,6 +5,7 @@ const toggleAutoplay = () => {
     toggleAutoplayButton.querySelector(".pellet").classList.toggle("autoplay-true")
 }
 
-toggleAutoplayButton.addEventListener("click", () => {
+toggleAutoplayButton.addEventListener("click", (event) => {
+    event.stopPropagation()
     toggleAutoplay()
 })

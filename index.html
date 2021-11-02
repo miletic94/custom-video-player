@@ -27,7 +27,9 @@
                         Speed
                     </div>
                     <div class="font-12">
-                        Normal 
+                        <span id="current-playback-rate">
+                            Normal
+                        </span> 
                         <span class="material-icons font-12">
                             arrow_forward_ios
                         </span>
@@ -53,19 +55,24 @@
                     </span>
                 </div>
                 
-                <div class="pannel-row font-14 justify-center" >
+                <div class="pannel-row font-14 justify-center" 
+                     data-playback-rate="2.0">
                     2.0x
                 </div>
-                <div class="pannel-row font-14 justify-center">
+                <div class="pannel-row font-14 justify-center"
+                    data-playback-rate="1.5">
                     1.5x
                 </div>
-                <div class="pannel-row font-14 justify-center">
-                    1.0x
+                <div class="pannel-row font-14 justify-center"
+                    data-playback-rate="1.0">
+                    Normal
                 </div>
-                <div class="pannel-row font-14 justify-center">
+                <div class="pannel-row font-14 justify-center"
+                    data-playback-rate="0.75">
                     0.75x
                 </div>
-                <div class="pannel-row font-14 justify-center">
+                <div class="pannel-row font-14 justify-center"
+                    data-playback-rate="0.25">
                     0.25x
                 </div>
             </div>
@@ -123,11 +130,27 @@
                     </div>
                     <div id="time">
                         <span id="time-passed">
-                            02:07
+                            <span data-current-time="hours">
+                                
+                            </span>
+                            <span data-current-time="minutes">
+                                00
+                            </span>:
+                            <span data-current-time="seconds">
+                                00
+                            </span>
                         </span>
-                        /
+                        <span class="padding-1">/</span>
                         <span id="duration">
-                            06:06
+                            <span data-duration="hours">
+                            
+                            </span>
+                            <span data-duration="minutes">
+                                06
+                            </span>:
+                            <span data-duration="seconds">
+                                06
+                            </span>
                         </span>
                     </div>
                     <div id="volume-controler">
@@ -174,6 +197,7 @@
     <script src="scripts/toggleSettingsView.js"></script>
     <script src="scripts/toggleAutoplayView.js"></script>
     <script src="scripts/togglePlayPauseView.js"></script>
+    <script src="scripts/togglePlaybackRateView.js" type="module"></script>
     <script src="scripts/sliderHanlder.js" type="module"></script>
 
 </body>
