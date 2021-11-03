@@ -31,19 +31,9 @@ class VideoControler {
                 element.innerText = ("0"+currentTime[element.dataset.currentTime]).slice(-2)
                 })
             })    
+            this.showControls()
             this.videoplayer.addEventListener("mousemove", (event) => {
-                if(videoControlsFrame.classList.contains("d-none")) {
-                    videoControlsFrame.classList.toggle("d-none")
-                    videoControlsFrame.classList.toggle("d-flex")
-                    this.videoplayer.classList.toggle("cursor-none")
-                    this.videoplayer.classList.toggle("cursor-pointer")
-                    setTimeout(() => {
-                        this.videoplayer.classList.toggle("cursor-none")
-                        this.videoplayer.classList.toggle("cursor-pointer")
-                        videoControlsFrame.classList.toggle("d-none")
-                        videoControlsFrame.classList.toggle("d-flex")
-                    }, 5000);
-                }
+                this.showControls()
             })   
             videoDurationDisplayElements.forEach(element => {
                 if(element.dataset.duration === "hours"
@@ -55,6 +45,20 @@ class VideoControler {
             clearInterval(i)
             }, 200);
         }
+    showControls() {
+        if(videoControlsFrame.classList.contains("d-none")) {
+            videoControlsFrame.classList.toggle("d-none")
+            videoControlsFrame.classList.toggle("d-flex")
+            this.videoplayer.classList.toggle("cursor-none")
+            this.videoplayer.classList.toggle("cursor-pointer")
+            setTimeout(() => {
+                this.videoplayer.classList.toggle("cursor-none")
+                this.videoplayer.classList.toggle("cursor-pointer")
+                videoControlsFrame.classList.toggle("d-none")
+                videoControlsFrame.classList.toggle("d-flex")
+            }, 5000);
+        } 
+    }
     appendVideoElement(videoLink, videoplayer) {
         let videoElement = document.createElement("video")
         videoElement.setAttribute("src", videoLink)
