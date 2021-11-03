@@ -15,6 +15,7 @@ body {
 }
 video {
     width: 100%;
+    cursor:pointer;
 }
 #controls-frame {
     display:flex;
@@ -84,6 +85,11 @@ div .control-icons {
 #playback-controls:hover {
     max-width: 375px;
 }
+#volume-position-range {
+    right:0;
+    bottom: 0;
+    cursor:pointer;
+}
 /* @keyframes grow-width-153 {
     to {
         width: 153px
@@ -91,6 +97,7 @@ div .control-icons {
 } */
 #playback-controls:hover #volume-controler {
     width: 153px;
+    cursor:default;
 }
 #playback-controls:hover #volume-control-slider {
     animation: 200ms width-100 forwards;
@@ -99,6 +106,7 @@ div .control-icons {
 @keyframes width-100 {
     from {
         width: 0;
+
     }
     to {
         width: 100px;
@@ -108,12 +116,15 @@ div .control-icons {
     display:none;
     animation: 200ms width-0;
     left: 20px;
+    max-width: 100px;
 }
 #volume-value {
     background-color: var(--primary-color);
     width: 20%;
     height: 5px;
     position: relative;
+    max-width: 100px;
+    min-width: 5px;
 }
 #volume-value-indicator {
     background-color: white;
@@ -211,6 +222,9 @@ input[type="range"] {
 }
 .no-pointer {
     cursor: initial;
+}
+#volume-controler .d-none {
+    display: none;
 }
 #play-button .d-none {
     display: none;

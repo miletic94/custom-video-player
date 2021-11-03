@@ -10,5 +10,5 @@ export const pauseButton = document.querySelector('[data-play ="false"]')
 export const playbackRateOptions = [...document.querySelectorAll('[data-playback-rate]')]
 export const currentPlaybackRate = document.querySelector('#current-playback-rate')
 export const videoDurationDisplayElements = [...document.querySelectorAll('[data-duration]')]
-export const videoCurrentTimeDisplayElements = [...document.querySelectorAll('[data-current-time')
-]
+export const videoCurrentTimeDisplayElements = [...document.querySelectorAll('[data-current-time]')]
+export const volumeControlerIcons = [...document.querySelectorAll('[data-volume-controler-icon]')]

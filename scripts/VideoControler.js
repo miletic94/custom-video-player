@@ -3,6 +3,8 @@ import {videoPositionRange, progressValue, volumePositionRange, volumeValue} fro
 import {SliderHandler } from "./sliderHanlder.js"
 import { playbackRateOptions } from "./consts.js"
 import {videoDurationDisplayElements, videoCurrentTimeDisplayElements} from "./consts.js"
+import {toggleVolumeControlerIcon} from "./toggleVolumeIconView.js"
+import {volumeControlerIcons} from "./consts.js"
 
 class VideoControler {
     constructor(videoLink, videoplayer) {
@@ -23,6 +25,8 @@ class VideoControler {
                     if(element.dataset.currentTime === "hours"
                   && this.videDurationArranged[element.dataset.currentTime] === 0) {
                     return  
+                } else if(currentTime[element.dataset.currentTime] === NaN) {
+                    element.innerText = "00"
                 }
                 element.innerText = ("0"+currentTime[element.dataset.currentTime]).slice(-2)
                 })
@@ -31,6 +35,9 @@ class VideoControler {
                 if(element.dataset.duration === "hours"
                   && this.videDurationArranged[element.dataset.duration] === 0) {
                     return  
+                } else if(this.videDurationArranged[element.dataset.currentTime] === NaN) {
+                    console.log(("nan"))
+                    element.innerText = "00"
                 }
                 element.innerText = ("0"+this.videDurationArranged[element.dataset.duration]).slice(-2)
             })
@@ -83,7 +90,27 @@ class VideoControler {
         this.video.currentTime = this.percentageToValue(inputElement.value, "time")
     }
     updateVideoVolume(inputElement) {
+        console.log(this.percentageToValue(inputElement.value, "volume"))
+        if(this.percentageToValue(inputElement.value, "volume") === 0) {
+            this.video.muted = true
+            toggleVolumeControlerIcon()
+            return
+        }
         this.video.volume = this.percentageToValue(inputElement.value, "volume")
+        if(this.video.muted) {
+            this.video.muted = false
+            toggleVolumeControlerIcon()
+        }
+        
+    }
+    mute() {
+        this.volumeSliderControler.value = 0 // THIS IS BAD
+        this.video.muted = true
+    }
+    // put volume value in session sotrage
+    unmute() {
+        this.volumeSliderControler.value = 100 // THIS IS BAD
+        this.video.muted = false
     }
     get playbackRate() {
         return this.video.playbackRate
@@ -157,6 +184,17 @@ volumePositionRange.addEventListener("input", () => {
 playbackRateOptions.forEach(option => {
     option.addEventListener("click", () => {
         videoControler.playbackRate = option.dataset.playbackRate
+    })
+})
+
+volumeControlerIcons.forEach(icon => {
+    icon.addEventListener("click", (event) => {
+        if(icon.dataset.volumeControlerIcon === "mute") {
+            videoControler.mute()
+        } else if(icon.dataset.volumeControlerIcon === "unmute") {
+            videoControler.unmute()
+        }
+        toggleVolumeControlerIcon()
     })
 })
 

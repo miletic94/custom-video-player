@@ -154,10 +154,10 @@
                         </span>
                     </div>
                     <div id="volume-controler">
-                        <span class="material-icons control-icons">
+                        <span class="material-icons control-icons d-inline" data-volume-controler-icon="mute"><!--mute to indicate clicking will lead to muting-->
                             volume_up
                         </span>
-                        <span style="display:none" class="material-icons control-icons">
+                        <span class="material-icons control-icons d-none" data-volume-controler-icon="unmute">
                             volume_off
                         </span>
                         <div id="volume-control-slider">
@@ -197,6 +197,7 @@
     <script src="scripts/toggleSettingsView.js"></script>
     <script src="scripts/toggleAutoplayView.js"></script>
     <script src="scripts/togglePlayPauseView.js"></script>
+    <script src="scripts/toggleVolumeIconView.js" type="module"></script>
     <script src="scripts/togglePlaybackRateView.js" type="module"></script>
     <script src="scripts/sliderHanlder.js" type="module"></script>
 
