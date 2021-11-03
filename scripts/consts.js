@@ -12,3 +12,4 @@ export const currentPlaybackRate = document.querySelector('#current-playback-rat
 export const videoDurationDisplayElements = [...document.querySelectorAll('[data-duration]')]
 export const videoCurrentTimeDisplayElements = [...document.querySelectorAll('[data-current-time]')]
 export const volumeControlerIcons = [...document.querySelectorAll('[data-volume-controler-icon]')]
+export const videoControlsFrame = document.querySelector('#controls-frame')

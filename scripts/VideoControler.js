@@ -5,6 +5,7 @@ import { playbackRateOptions } from "./consts.js"
 import {videoDurationDisplayElements, videoCurrentTimeDisplayElements} from "./consts.js"
 import {toggleVolumeControlerIcon} from "./toggleVolumeIconView.js"
 import {volumeControlerIcons} from "./consts.js"
+import {videoControlsFrame} from "./consts.js"
 
 class VideoControler {
     constructor(videoLink, videoplayer) {
@@ -29,9 +30,22 @@ class VideoControler {
                 }
                 element.innerText = ("0"+currentTime[element.dataset.currentTime]).slice(-2)
                 })
-            })       
+            })    
+            this.videoplayer.addEventListener("mousemove", (event) => {
+                if(videoControlsFrame.classList.contains("d-none")) {
+                    videoControlsFrame.classList.toggle("d-none")
+                    videoControlsFrame.classList.toggle("d-flex")
+                    this.videoplayer.classList.toggle("cursor-none")
+                    this.videoplayer.classList.toggle("cursor-pointer")
+                    setTimeout(() => {
+                        this.videoplayer.classList.toggle("cursor-none")
+                        this.videoplayer.classList.toggle("cursor-pointer")
+                        videoControlsFrame.classList.toggle("d-none")
+                        videoControlsFrame.classList.toggle("d-flex")
+                    }, 5000);
+                }
+            })   
             videoDurationDisplayElements.forEach(element => {
-                console.log("videoDurationDisplayElements")
                 if(element.dataset.duration === "hours"
                   && this.videDurationArranged[element.dataset.duration] === 0) {
                     return  
@@ -86,7 +100,6 @@ class VideoControler {
         this.video.currentTime = this.percentageToValue(inputElement.value, "time")
     }
     updateVideoVolume(inputElement) {
-        console.log(this.percentageToValue(inputElement.value, "volume"))
         if(this.percentageToValue(inputElement.value, "volume") === 0) {
             this.video.muted = true
             toggleVolumeControlerIcon()
@@ -194,8 +207,17 @@ volumeControlerIcons.forEach(icon => {
     })
 })
 
-
-
+document.body.addEventListener("keyup", (event) => {
+    if(event.code === "Space") {
+        if(videoControler.video.paused) {
+            videoControler.play()
+            togglePlayPauseView()
+        } else if(!videoControler.video.paused) {
+            videoControler.pause()
+            togglePlayPauseView()
+        }
+    }
+})
 
 
 

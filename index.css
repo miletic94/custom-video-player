@@ -15,10 +15,8 @@ body {
 }
 video {
     width: 100%;
-    cursor:pointer;
 }
 #controls-frame {
-    display:flex;
     flex-direction: column;
     justify-content: center;
     position:absolute;
@@ -69,7 +67,7 @@ video {
     top: 0;
 }
 #controls {
-    display: flex;
+    display:flex;
     justify-content: space-between;
     align-items: center;
     height: 56px;
@@ -227,8 +225,20 @@ input[type="range"] {
 .pannel-row .font-12 {
     font-size: 12px;
 }
-.no-pointer {
-    cursor: initial;
+.curosr-default {
+    cursor: default;
+}
+.d-none {
+    display:none
+}
+.d-inline {
+    display:inline;
+}
+.d-flex {
+    display: flex;
+}
+.d-block {
+    display: block;
 }
 #volume-controler .d-none {
     display: none;
@@ -238,6 +248,12 @@ input[type="range"] {
 }
 #play-button .d-inline {
     display: inline-block;
+}
+.cursor-none {
+    cursor:none;
+}
+.cursor-pointer {
+    cursor: pointer;
 }
 .secondary-settings-pannel {
     display:none;
@@ -339,5 +355,14 @@ div .control-icons, #time {
    }
    #skip-next > *{
        display:none;
+   }
+   #progressbar-container {
+       overflow: visible;
+   }
+   #progressbar {
+       transform: translate(0)
+   }
+   #current-time-indicator {
+       opacity: 1;
    }
 }
