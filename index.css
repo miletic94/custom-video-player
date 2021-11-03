@@ -24,7 +24,7 @@ video {
     position:absolute;
     bottom: 0;
     height: 67px;
-    width: 96%;
+    width: 96.79%;
 }
 #progressbar-container {
     height:11px;
@@ -61,7 +61,7 @@ video {
     top: 0;
 }
 #progress-value {
-    width: 27.78%;
+    width: 0%;
     height: inherit;
     position: absolute;
     display: flex;
@@ -327,6 +327,9 @@ div .control-icons, #time {
 @media screen and (max-width: 500px) {
     #volume-controler > *{
        display: none; 
+   }
+   #playback-controls:hover #volume-controler {
+       display: none;
    }
    #playback-controls {
        width: 50%;
