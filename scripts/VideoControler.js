@@ -17,6 +17,7 @@ class VideoControler {
             this.videDurationArranged = this.toHoursMinutesSeconds(this.video.duration)
             this.videoSliderControler = new SliderHandler(videoPositionRange, progressValue, this.toPercentage(this.video.currentTime, this.videoDuration)) // value = 0.01 because of the bug video.duration = Infinity
             this.volumeSliderControler = new SliderHandler(volumePositionRange, volumeValue, this.toPercentage(this.video.volume, 1)) 
+            
             this.video.addEventListener("timeupdate", () => {
                 this.videoSliderControler.value = this.toPercentage(this.video.currentTime, this.videoDuration)
                 let currentTime = this.toHoursMinutesSeconds(this.video.currentTime)
@@ -31,6 +32,7 @@ class VideoControler {
                 element.innerText = ("0"+currentTime[element.dataset.currentTime]).slice(-2)
                 })
             })
+            
             videoDurationDisplayElements.forEach(element => {
                 if(element.dataset.duration === "hours"
                   && this.videDurationArranged[element.dataset.duration] === 0) {
@@ -41,9 +43,9 @@ class VideoControler {
                 }
                 element.innerText = ("0"+this.videDurationArranged[element.dataset.duration]).slice(-2)
             })
+
             clearInterval(i)
             }, 200);
-        
         }
     appendVideoElement(videoLink, videoplayer) {
         let videoElement = document.createElement("video")

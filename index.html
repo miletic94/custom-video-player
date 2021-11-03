@@ -14,10 +14,10 @@
         <!-- <video src="videos/video1.webm" controls></video> -->
         <div id="controls-frame">
             <div id="settings-pannel" style="display: none;">
-                <div class="pannel-row justify-between no-pointer">
+                <div class="pannel-row justify-between no-pointer disabled">
                     <div class="font-14">Autoplay</div>
-                    <div class="toggleAutoplay" data-autoplay="false">
-                        <span class="pellet">
+                    <div class="toggleAutoplay disabled" data-autoplay="false">
+                        <span class="pellet disabled">
 
                         </span>
                     </div>
@@ -35,7 +35,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="pannel-row justify-between" data-toggle-settings="quality-pannel">
+                <div class="pannel-row justify-between disabled" data-toggle-settings="quality-pannel">
                     <div class="font-14">
                         Quality
                     </div>
@@ -123,8 +123,8 @@
                             pause
                         </span>
                     </div>
-                    <div>
-                        <span class="material-icons control-icons">
+                    <div id="skip-next">
+                        <span class="material-icons control-icons disabled">
                             skip_next
                         </span>
                     </div>

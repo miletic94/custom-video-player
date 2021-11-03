@@ -5,8 +5,8 @@ body {
     align-items: center;
 }
 #video-frame {
-    width: 100vmin;
-    height: 56.25vmin;
+    width: calc(90vmin + 5rem);
+    height: calc(50.625vmin + 5rem);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +24,7 @@ video {
     position:absolute;
     bottom: 0;
     height: 67px;
-    width: 96.79%;
+    width: 96%;
 }
 #progressbar-container {
     height:11px;
@@ -55,7 +55,7 @@ video {
     transition: transform ease 300ms;
 }
 #progress-buffered {
-    width: 30.7%;
+    width: 90%;
     height: inherit;
     position: absolute;
     top: 0;
@@ -76,7 +76,10 @@ video {
     padding: 0 1.4vw;
 }
 div .control-icons {
-    font-size: 33px;
+    font-size: clamp(20px, 5vw, 33px);
+}
+#time {
+    font-size: clamp(10px, 5vw, 18px);
 }
 #playback-controls {
     width: 100%;
@@ -89,6 +92,10 @@ div .control-icons {
     right:0;
     bottom: 0;
     cursor:pointer;
+}
+.disabled {
+    opacity: 0.5;
+    cursor: default;
 }
 /* @keyframes grow-width-153 {
     to {
@@ -315,4 +322,19 @@ div .control-icons, #time {
 }
 .toggleAutoplay .pellet {
     background-color: white;
+}
+
+@media screen and (max-width: 500px) {
+    #volume-controler > *{
+       display: none; 
+   }
+   #playback-controls {
+       width: 50%;
+   }
+   #other-controls {
+       width: 40%;
+   }
+   #skip-next > *{
+       display:none;
+   }
 }
