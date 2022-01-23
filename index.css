@@ -23,6 +23,7 @@ video {
     bottom: 0;
     height: 67px;
     width: 96.79%;
+    z-index:1
 }
 #progressbar-container {
     height:11px;
@@ -32,10 +33,12 @@ video {
     animation: 350ms delay-overflow-hidden
 }
 #progressbar {
+    position: relative;
     height: 11px;
     transform:translateY(8px);
     cursor: pointer;
     transition: transform ease 300ms;
+    z-index: 0;
 }
 #progressbar-container:hover {
     animation: 350ms delay-overflow-visible forwards;
@@ -166,7 +169,7 @@ div .control-icons {
     background-color: white;
     opacity: 0;
     cursor: pointer;
-    transform: translateX(50%)
+    transform: translateX(100%);
 }
 #progressbar-container:hover #current-time-indicator {
     opacity: 1;
@@ -181,13 +184,14 @@ div .control-icons {
     background-color: black;
     position: absolute;
 }
-input[type="range"] {
+input[type="range"], #video-position-range, #volume-position-range {
     width: 100%; 
     height: 100%; 
-    z-index:1; 
+    margin:0;
     position: absolute; 
     top:0;
     opacity:0;
+    z-index:1;
 }
 /* Settings */ 
 #settings-button {
@@ -299,7 +303,7 @@ input[type="range"] {
 /* Colors */ 
 
 :root {
-    --primary-color: rgba(255, 163, 26, 1);
+    --primary-color: rgba(187, 205, 103, 1);
     --secondary-color: rgba(27, 27, 27, 1);
     --ternary-color: rgba(41, 41, 41, 1);
     --quaternary-color: rgba(128, 128, 128, 1);

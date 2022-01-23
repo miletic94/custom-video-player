@@ -145,7 +145,7 @@ class VideoControler {
 }
 
 
-const videoControler = new VideoControler("../videos/video1.webm", videoplayer)
+const videoControler = new VideoControler("../videos/clip1.mp4", videoplayer)
 
 console.log(videoControler.playbackRate)
 enterFullscreenButton.addEventListener("click",  () => {
